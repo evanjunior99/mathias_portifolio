@@ -45,7 +45,13 @@ const TechStack = memo(({ tech }: { tech: string }) => (
   </div>
 ));
 
-const CTAButton = memo(({ href, text, icon: Icon }) => {
+interface CTAButtonProps {
+  href: string;
+  text: string;
+  icon: React.ElementType;
+}
+
+const CTAButton = memo(({ href, text, icon: Icon }: CTAButtonProps) => {
   return (
     <a href={href} className="block">
       <button className="group relative w-[140px] sm:w-[160px]">
@@ -70,7 +76,13 @@ const CTAButton = memo(({ href, text, icon: Icon }) => {
   );
 });
 
-const SocialLink = memo(({ icon: Icon, link }: { icon: any; link: string }) => (
+interface SocialLinkProps {
+  icon: React.ElementType;
+  link: string;
+}
+
+
+const SocialLink = memo(({ icon: Icon, link }: SocialLinkProps) => (
   <a href={link} target="_blank" rel="noopener noreferrer">
     <button className="group relative p-2 sm:p-3">
       {/* Background Glow */}

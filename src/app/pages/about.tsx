@@ -7,6 +7,16 @@ import 'aos/dist/aos.css';
 import Image from "next/image";
 import { useTheme } from '../components/themeProvider';
 
+
+interface StatCardProps {
+  icon: React.ComponentType<{ className?: string }>;
+  color: string;
+  value: number;
+  label: string;
+  description: string;
+  animation: string;
+}
+
 const Header = memo(() => (
   <div className="text-center lg:mb-8 mb-2 px-[5%]">
     <div className="inline-block relative group">
@@ -31,7 +41,7 @@ const Header = memo(() => (
 ));
 
 const ProfileImage = memo(() => {
-  const [isHovering, setIsHovering] = useState(false);
+  const [isHovering, setIsHovering] = useState<boolean>(false);
   
   return (
     <div 
@@ -87,7 +97,7 @@ const ProfileImage = memo(() => {
   );
 });
 
-const StatCard = memo(({ icon: Icon, color, value, label, description, animation }) => (
+const StatCard: React.FC<StatCardProps> = memo(({ icon: Icon, color, value, label, description, animation }) => (
   <div data-aos={animation} data-aos-duration={1300} className="relative group">
     <div className="relative z-10 bg-white/50 dark:bg-black/50 backdrop-blur-lg rounded-2xl p-6 border border-gray-200/50 dark:border-gray-800/50 overflow-hidden transition-all duration-300 hover:scale-105 hover:shadow-2xl h-full flex flex-col justify-between">
       <div className={`absolute -z-10 inset-0 bg-gradient-to-br ${color} opacity-10 group-hover:opacity-20 transition-opacity duration-300`}></div>
@@ -136,8 +146,8 @@ const AboutPage = () => {
   const [isLoaded, setIsLoaded] = useState(false);
 
   const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
-    const storedProjects = JSON.parse(localStorage.getItem("projects") || "[]");
-    const storedCertificates = JSON.parse(localStorage.getItem("certificates") || "[]");
+  const storedProjects: string[] = JSON.parse(localStorage.getItem("projects") || "[]");
+  const storedCertificates: string[] = JSON.parse(localStorage.getItem("certificates") || "[]");
     
     const startDate = new Date("2021-11-06");
     const today = new Date();
@@ -161,7 +171,7 @@ const AboutPage = () => {
     initAOS();
     setIsLoaded(true);
     
-    let resizeTimer;
+    let resizeTimer: NodeJS.Timeout;
     const handleResize = () => {
       clearTimeout(resizeTimer);
       resizeTimer = setTimeout(initAOS, 250);
