@@ -40,13 +40,13 @@ export default {
       },
       keyframes: {
         fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
         },
         pulseGradient: {
-          '0%': { transform: 'scale(1)', opacity: 0.2 },
-          '50%': { transform: 'scale(1.1)', opacity: 0.4 },
-          '100%': { transform: 'scale(1)', opacity: 0.2 },
+          '0%': { transform: 'scale(1)', opacity: '0.2' },
+          '50%': { transform: 'scale(1.1)', opacity: '0.4' },
+          '100%': { transform: 'scale(1)', opacity: '0.2' },
         },
       },
     },

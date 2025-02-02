@@ -1,11 +1,13 @@
 'use client';
 
+/* eslint-disable react/no-unescaped-entities */
+
+
 import React, { useEffect, memo, useMemo, useState } from "react";
-import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles, UserCheck } from "lucide-react";
+import { FileText, Code, Award, Globe, ArrowUpRight, Sparkles } from "lucide-react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
-import Image from "next/image";
-import { useTheme } from '../components/themeProvider';
+
 
 
 interface StatCardProps {
@@ -39,6 +41,7 @@ const Header = memo(() => (
     </p>
   </div>
 ));
+Header.displayName = "Header";
 
 const ProfileImage = memo(() => {
   const [isHovering, setIsHovering] = useState<boolean>(false);
@@ -73,7 +76,7 @@ const ProfileImage = memo(() => {
             <div className="absolute inset-0 bg-gradient-to-b from-black/20 via-transparent to-black/40 z-10 transition-opacity duration-700 group-hover:opacity-0 hidden sm:block" />
             <div className="absolute inset-0 bg-gradient-to-t from-blue-500/20 via-transparent to-purple-500/20 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 hidden sm:block" />
             
-            <img
+            {/* <img
               src="/evan.png"
               alt="Profile"
               style={{ width: "600px", height: "500px" }}
@@ -81,7 +84,7 @@ const ProfileImage = memo(() => {
                 isHovering ? 'scale-110 rotate-2' : ''
               }`}
               loading="lazy"
-            />
+            /> */}
 
             <div className={`absolute inset-0 transition-all duration-700 z-20 hidden sm:block ${
               isHovering ? 'opacity-100' : 'opacity-0'
@@ -96,6 +99,7 @@ const ProfileImage = memo(() => {
     </div>
   );
 });
+ProfileImage.displayName = "ProfileImage";
 
 const StatCard: React.FC<StatCardProps> = memo(({ icon: Icon, color, value, label, description, animation }) => (
   <div data-aos={animation} data-aos-duration={1300} className="relative group">
@@ -140,9 +144,10 @@ const StatCard: React.FC<StatCardProps> = memo(({ icon: Icon, color, value, labe
     </div>
   </div>
 ));
+StatCard.displayName = "StatCard";
 
 const AboutPage = () => {
-  const { isDarkMode } = useTheme();
+  //const { isDarkMode } = useTheme();
   const [isLoaded, setIsLoaded] = useState(false);
 
   const { totalProjects, totalCertificates, YearExperience } = useMemo(() => {
@@ -232,6 +237,7 @@ const AboutPage = () => {
                 <span className="bg-gradient-to-r from-gray-900 to-blue-500 dark:from-gray-100 dark:to-blue-300 bg-clip-text text-transparent">
                   Hi, I'm
                 </span>
+
                 <span 
                   className="block mt-2 text-gray-800 dark:text-gray-200"
                   data-aos="fade-right"

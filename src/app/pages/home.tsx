@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 import { useEffect, useState, useCallback, memo } from 'react';
-import { Github, Linkedin, Mail, ExternalLink, Instagram, Facebook } from "lucide-react";
+import { Linkedin, Mail, ExternalLink, Instagram, Facebook } from "lucide-react";
 import { FaWhatsapp } from "react-icons/fa";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import Image from 'next/image';
 import { useTheme } from '../components/themeProvider';
 
 const StatusBadge = memo(() => (
@@ -15,6 +17,7 @@ const StatusBadge = memo(() => (
     </div>
   </div>
 ));
+StatusBadge.displayName = "StatusBadge";
 
 const MainTitle = memo(() => (
   <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
@@ -38,12 +41,14 @@ const MainTitle = memo(() => (
     </h1>
   </div>
 ));
+MainTitle.displayName = "MainTitle";
 
 const TechStack = memo(({ tech }: { tech: string }) => (
   <div className="px-3 py-1.5 text-xs sm:text-sm sm:px-4 sm:py-2 rounded-full bg-gray-100/50 dark:bg-background/5 backdrop-blur-sm border border-gray-200/50 dark:border-foreground/10 text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-background/10 transition-colors">
     {tech}
   </div>
 ));
+TechStack.displayName = "TechStack";
 
 interface CTAButtonProps {
   href: string;
@@ -75,6 +80,7 @@ const CTAButton = memo(({ href, text, icon: Icon }: CTAButtonProps) => {
     </a>
   );
 });
+CTAButton.displayName = "CTAButton";
 
 interface SocialLinkProps {
   icon: React.ElementType;
@@ -95,6 +101,7 @@ const SocialLink = memo(({ icon: Icon, link }: SocialLinkProps) => (
     </button>
   </a>
 ));
+SocialLink.displayName = "SocialLink";
 
 // Constants
 const TYPING_SPEED = 100;
@@ -223,9 +230,11 @@ const HomePage = () => {
                 <div className={`relative z-10 w-full opacity-90 transform transition-transform duration-500 ${
                   isHovering ? "scale-105" : "scale-100"
                 }`}>
-                  <img
+                  <Image
                     src="/mg3.jpg"
                     alt="Your Name or Description"
+                    width={599}
+                    height={400}
                     className="rounded-3xl object-cover w-300 h-[300px] sm:h-[400px] lg:h-[600px]"
                   />
                 </div>

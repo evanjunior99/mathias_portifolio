@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client'; // Only needed for Next.js apps, remove if using plain React
 
 import React, { useState, useEffect } from 'react';
@@ -10,30 +11,30 @@ type TypewriterEffectProps = {
   text: string;
 };
 
-const TypewriterEffect: React.FC<TypewriterEffectProps> = ({ text }) => {
-  const [displayText, setDisplayText] = useState('');
+// const TypewriterEffect: React.FC<TypewriterEffectProps> = ({ text }) => {
+//   const [displayText, setDisplayText] = useState('');
 
-  useEffect(() => {
-    let index = 0;
-    const timer = setInterval(() => {
-      if (index <= text.length) {
-        setDisplayText(text.slice(0, index));
-        index++;
-      } else {
-        clearInterval(timer);
-      }
-    }, 100);
+//   useEffect(() => {
+//     let index = 0;
+//     const timer = setInterval(() => {
+//       if (index <= text.length) {
+//         setDisplayText(text.slice(0, index));
+//         index++;
+//       } else {
+//         clearInterval(timer);
+//       }
+//     }, 100);
     
-    return () => clearInterval(timer);
-  }, [text]);
+//     return () => clearInterval(timer);
+//   }, [text]);
 
-  return (
-    <span className="inline-block">
-      {displayText}
-      <span className="animate-pulse">|</span>
-    </span>
-  );
-};
+//   return (
+//     <span className="inline-block">
+//       {displayText}
+//       <span className="animate-pulse">|</span>
+//     </span>
+//   );
+// };
 
 const BackgroundEffect: React.FC = () => (
   <div className="absolute inset-0 overflow-hidden">
