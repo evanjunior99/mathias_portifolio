@@ -1,9 +1,7 @@
-
 import React, { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 import { useTheme } from "./themeProvider";
 
-// Define Types for Navigation Items
 interface NavItem {
   href: string;
   label: string;
@@ -22,7 +20,6 @@ const Navbar: React.FC = () => {
   const [activeSection, setActiveSection] = useState("Home");
   const { isDarkMode, toggleTheme } = useTheme();
 
-  // Scroll Spy Effect
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -58,12 +55,10 @@ const Navbar: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Mobile Menu Effect
   useEffect(() => {
     document.body.style.overflow = isOpen ? "hidden" : "unset";
   }, [isOpen]);
 
-  // Scroll to Section Function
   const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault();
     const section = document.querySelector(href) as HTMLElement | null;
@@ -79,19 +74,19 @@ const Navbar: React.FC = () => {
       className={`fixed w-full top-0 z-50 transition-all duration-500 ${
         isOpen
           ? "bg-[#030014]/95 dark:bg-[#030014]/95"
-          : scrolled
-          ? "bg-white/50 dark:bg-[#030014]/50 backdrop-blur-xl"
-          : "bg-transparent"
+        
+          : "bg-white/50 dark:bg-[#030014]/50 backdrop-blur-xl"
+          
       }`}
     >
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <div className="flex items-center justify-between h-16">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+        <div className="relative flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
             <a
               href="#Home"
               onClick={(e) => scrollToSection(e, "#Home")}
-              className="text-3xl font-bold bg-gradient-to-r from-[#096929] to-[#09442c] bg-clip-text text-transparent"
+              className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-[#096929] to-[#09442c] bg-clip-text text-transparent"
             >
               Mathias
             </a>
@@ -133,11 +128,11 @@ const Navbar: React.FC = () => {
           </div>
 
           {/* Mobile Navigation Controls */}
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center space-x-2 md:hidden">
             {/* Dark Mode Toggle - Mobile */}
             <button
               onClick={toggleTheme}
-              className="p-2 mr-2 rounded-lg bg-gray-100 dark:bg-[#1e1e1e] hover:bg-gray-200 dark:hover:bg-[#444] transition-all duration-300"
+              className="p-1.5 rounded-lg bg-gray-100 dark:bg-[#1e1e1e] hover:bg-gray-200 dark:hover:bg-[#444] transition-all duration-300"
               aria-label="Toggle theme"
             >
               {isDarkMode ? (
@@ -150,14 +145,15 @@ const Navbar: React.FC = () => {
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`relative p-2 text-[#e2d3fd] hover:text-white transition-transform duration-300 ease-in-out transform ${
-                isOpen ? "rotate-90 scale-125" : "rotate-0 scale-100"
+              className={`p-1.5 text-gray-700 dark:text-[#e2d3fd] hover:text-black dark:hover:text-white transition-transform duration-300 ease-in-out transform ${
+                isOpen ? "rotate-90" : "rotate-0"
               }`}
+              aria-label="Toggle menu"
             >
               {isOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-5 h-5" />
               )}
             </button>
           </div>
@@ -173,7 +169,7 @@ const Navbar: React.FC = () => {
           style={{ top: "64px" }}
         >
           <div className="flex flex-col h-[calc(100vh-64px)]">
-            <div className="px-4 py-6 space-y-4 flex-1">
+            <div className="px-4 py-6 space-y-4">
               {navItems.map((item, index) => (
                 <a
                   key={item.label}

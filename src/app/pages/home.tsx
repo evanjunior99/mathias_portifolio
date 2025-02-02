@@ -21,7 +21,7 @@ StatusBadge.displayName = "StatusBadge";
 
 const MainTitle = memo(() => (
   <div className="space-y-2" data-aos="fade-up" data-aos-delay="600">
-    <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
+    <h1 className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-6xl xl:text-7xl font-bold tracking-tight">
       {/* Social */}
       <span className="relative inline-block">
         <span className="absolute -inset-2 bg-gradient-to-r from-primary to-secondary blur-3xl opacity-30 dark:opacity-20"></span>
@@ -29,7 +29,8 @@ const MainTitle = memo(() => (
           Social
         </span>
       </span>
-      <br />
+      <br className="md:hidden" />
+      <span className="hidden md:inline">&nbsp;</span>
       
       {/* Worker */}
       <span className="relative inline-block mt-2">
@@ -42,6 +43,7 @@ const MainTitle = memo(() => (
   </div>
 ));
 MainTitle.displayName = "MainTitle";
+
 
 const TechStack = memo(({ tech }: { tech: string }) => (
   <div className="px-3 py-1.5 text-xs sm:text-sm sm:px-4 sm:py-2 rounded-full bg-gray-100/50 dark:bg-background/5 backdrop-blur-sm border border-gray-200/50 dark:border-foreground/10 text-gray-800 dark:text-gray-200 hover:bg-gray-200/50 dark:hover:bg-background/10 transition-colors">
@@ -167,46 +169,59 @@ const HomePage = () => {
     return () => clearInterval(timer);
   }, [handleTyping, isTyping]);
 
+  
   return (
     <div className="min-h-screen transition-colors duration-700 bg-white dark:bg-black text-gray-900 dark:text-gray-100" id="Home">
       <div className={`relative z-10 transition-all duration-1000 ${isLoaded ? "opacity-100" : "opacity-0"}`}>
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 min-h-screen">
-          <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen lg:justify-between gap-8 lg:gap-20 py-8 lg:py-0">
+          <div className="flex flex-col lg:flex-row items-center justify-center min-h-screen lg:justify-between gap-6 sm:gap-8 lg:gap-20 py-16 lg:py-0">
             
             {/* Left Column */}
-            <div className="w-full lg:w-1/2 space-y-6 text-center lg:text-left order-2 lg:order-1" data-aos="fade-right" data-aos-delay="200">
-              <div className="space-y-4 sm:space-y-6">
+            <div className="w-full lg:w-1/2 space-y-4 sm:space-y-6 text-center lg:text-left order-2 lg:order-1 px-4 sm:px-0" 
+                 data-aos="fade-right" 
+                 data-aos-delay="200">
+              <div className="space-y-3 sm:space-y-4">
                 <StatusBadge />
                 <MainTitle />
                 
                 {/* Typing Effect */}
-                <div className="h-8 flex items-center justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="800">
-                  <span className="text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-gray-600 to-gray-800 dark:from-gray-300 dark:to-gray-100 bg-clip-text text-transparent font-light">
+                <div className="h-12 sm:h-8 flex items-center justify-center lg:justify-start overflow-hidden" 
+                     data-aos="fade-up" 
+                     data-aos-delay="800">
+                  <span className="text-base xs:text-lg sm:text-xl md:text-2xl bg-gradient-to-r from-gray-600 to-gray-800 dark:from-gray-300 dark:to-gray-100 bg-clip-text text-transparent font-light">
                     {text}
                   </span>
-                  <span className="w-[2px] sm:w-[3px] h-5 sm:h-6 bg-gradient-to-t from-gray-400 to-gray-600 dark:from-gray-500 dark:to-gray-300 ml-1 animate-blink"></span>
+                  <span className="w-[2px] sm:w-[3px] h-4 sm:h-6 bg-gradient-to-t from-gray-400 to-gray-600 dark:from-gray-500 dark:to-gray-300 ml-1 animate-blink"></span>
                 </div>
 
                 {/* Description */}
-                <p className="text-sm sm:text-base md:text-lg text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed font-light mx-auto lg:mx-0" data-aos="fade-up" data-aos-delay="1000">
+                <p className="text-sm xs:text-base sm:text-lg text-gray-700 dark:text-gray-300 max-w-xl leading-relaxed font-light mx-auto lg:mx-0 px-4 sm:px-0" 
+                   data-aos="fade-up" 
+                   data-aos-delay="1000">
                   Transforming ideas into meaningful support and positive change through social work.
                 </p>
 
                 {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="1200">
+                <div className="flex flex-wrap gap-2 sm:gap-3 justify-center lg:justify-start px-2 sm:px-0" 
+                     data-aos="fade-up" 
+                     data-aos-delay="1200">
                   {TECH_STACK.map((tech, index) => (
                     <TechStack key={index} tech={tech} />
                   ))}
                 </div>
 
                 {/* CTA Buttons */}
-                <div className="flex flex-row gap-4 justify-center lg:justify-start" data-aos="fade-up" data-aos-delay="1400">
+                <div className="flex flex-row gap-3 sm:gap-4 justify-center lg:justify-start" 
+                     data-aos="fade-up" 
+                     data-aos-delay="1400">
                   <CTAButton href="#Portofolio" text="Projects" icon={ExternalLink} />
                   <CTAButton href="#Contact" text="Contact" icon={Mail} />
                 </div>
 
                 {/* Social Links */}
-                <div className="flex gap-3 sm:gap-4 justify-center lg:justify-start p-3" data-aos="fade-up" data-aos-delay="1600">
+                <div className="flex gap-2 sm:gap-3 justify-center lg:justify-start p-2 sm:p-3" 
+                     data-aos="fade-up" 
+                     data-aos-delay="1600">
                   {SOCIAL_LINKS.map((social, index) => (
                     <SocialLink key={index} {...social} />
                   ))}
@@ -215,12 +230,12 @@ const HomePage = () => {
             </div>
 
             {/* Image Section */}
-            <div className="w-full lg:w-1/2 h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-1 lg:order-2" 
-                onMouseEnter={() => setIsHovering(true)}
-                onMouseLeave={() => setIsHovering(false)}
-                data-aos="fade-left"
-                data-aos-delay="600">
-              <div className="relative w-full max-w-[400px] lg:max-w-none opacity-90">
+            <div className="w-full lg:w-1/2 h-[250px] xs:h-[300px] sm:h-[400px] lg:h-[600px] xl:h-[750px] relative flex items-center justify-center order-1 lg:order-2 px-4 sm:px-0" 
+                 onMouseEnter={() => setIsHovering(true)}
+                 onMouseLeave={() => setIsHovering(false)}
+                 data-aos="fade-left"
+                 data-aos-delay="600">
+              <div className="relative w-full max-w-[300px] xs:max-w-[350px] sm:max-w-[400px] lg:max-w-none opacity-90">
                 {/* Background Blur Overlay */}
                 <div className={`absolute inset-0 bg-gradient-to-r from-gray-200/10 to-gray-400/10 dark:from-gray-900/10 dark:to-gray-700/10 rounded-3xl blur-3xl transition-all duration-700 ease-in-out ${
                   isHovering ? "opacity-50 scale-105" : "opacity-20 scale-100"
@@ -235,7 +250,8 @@ const HomePage = () => {
                     alt="Your Name or Description"
                     width={599}
                     height={400}
-                    className="rounded-3xl object-cover w-300 h-[300px] sm:h-[400px] lg:h-[600px]"
+                    className="rounded-3xl object-cover w-full h-[250px] xs:h-[300px] sm:h-[400px] lg:h-[600px]"
+                    priority
                   />
                 </div>
 
@@ -243,7 +259,7 @@ const HomePage = () => {
                 <div className={`absolute inset-0 pointer-events-none transition-all duration-700 ${
                   isHovering ? "opacity-50" : "opacity-20"
                 }`}>
-                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[400px] aspect-square bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-indigo-600/10 dark:to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
+                  <div className={`absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[300px] xs:max-w-[350px] sm:max-w-[400px] aspect-square bg-gradient-to-br from-blue-500/10 to-purple-500/10 dark:from-indigo-600/10 dark:to-purple-500/10 blur-3xl animate-[pulse_6s_cubic-bezier(0.4,0,0.6,1)_infinite] transition-all duration-700 ${
                     isHovering ? "scale-110" : "scale-100"
                   }`}></div>
                 </div>

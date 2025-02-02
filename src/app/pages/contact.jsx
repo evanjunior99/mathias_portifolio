@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 'use client';
 
 import React, { useState, useEffect } from "react";
@@ -7,6 +6,7 @@ import Swal from "sweetalert2";
 import AOS from "aos";
 import "aos/dist/aos.css";
 import { useTheme } from '../components/themeProvider';
+import SocialLinks from '../components/socialLinks';
 
 const ContactPage = () => {
   const { isDarkMode } = useTheme();
@@ -89,7 +89,7 @@ const ContactPage = () => {
 
   return (
     <div 
-      className={`min-h-screen flex items-center justify-center transition-colors duration-700 bg-white dark:bg-black text-gray-900 dark:text-gray-100 ${
+      className={`min-h-screen transition-colors duration-700 bg-white dark:bg-black text-gray-900 dark:text-gray-100 ${
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}
       id="Contact"
@@ -112,13 +112,14 @@ const ContactPage = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] 2xl:grid-cols-[35%_65%] gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-[45%_55%] gap-12">
+          {/* Contact Form Section */}
           <div
             data-aos="fade-right"
             data-aos-duration="1200"
             className="bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-200/50 dark:border-gray-800/50 p-8 transition-all duration-300 hover:shadow-xl"
           >
-            <div className=" justify-between grid place-items-center items-start mb-8">
+            <div className="flex justify-between items-start mb-8">
               <div>
                 <h2 className="text-3xl font-bold mb-3 bg-gradient-to-r from-gray-900 to-blue-500 dark:from-gray-100 dark:to-blue-300 bg-clip-text text-transparent">
                   Get in Touch
@@ -205,7 +206,17 @@ const ContactPage = () => {
             </form>
           </div>
 
-          
+          {/* Social Links Section */}
+          <div
+            data-aos="fade-left"
+            data-aos-duration="1200"
+            className="bg-white/50 dark:bg-black/50 backdrop-blur-xl rounded-3xl shadow-lg border border-gray-200/50 dark:border-gray-800/50 p-8 transition-all duration-300 hover:shadow-xl"
+          >
+            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-gray-900 to-blue-500 dark:from-gray-100 dark:to-blue-300 bg-clip-text text-transparent">
+              Let's Connect
+            </h2>
+            <SocialLinks />
+          </div>
         </div>
       </div>
     </div>

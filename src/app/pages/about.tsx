@@ -218,7 +218,7 @@ const AboutPage = () => {
 
   return (
     <div
-      className={`min-h-screen transition-colors duration-700 bg-white dark:bg-black text-gray-900 dark:text-gray-100 ${
+      className={`min-h-screen  transition-colors duration-700 bg-white dark:bg-black text-gray-900 dark:text-gray-100 ${
         isLoaded ? 'opacity-100' : 'opacity-0'
       }`}
       id="About"
